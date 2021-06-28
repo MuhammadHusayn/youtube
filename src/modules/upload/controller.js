@@ -11,7 +11,7 @@ const POST = (req, res) => {
     let file = req.files.file
     let payload = jwt.verify(req.cookies.token, SECRET_KEY)
     let fileName = new Date().getTime() + file.name.replace(/\s/g, "_").trim()
-    file.mv(path.join(process.cwd(), 'src', 'uploads', 'videos', fileName))
+    file.mv(path.join(process.cwd(), 'src', 'uploads', 'vids', fileName))
     addVideo(req.body, payload, fileName)
     res.status(200).send({
         message: 'A video added successfully'

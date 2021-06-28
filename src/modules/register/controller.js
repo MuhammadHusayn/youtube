@@ -28,7 +28,7 @@ const GET = (req, res) => {
 const POST = (req, res) => {
     let file = req.files.file
     let fileName = new Date().getTime() + file.name.replace(/\s/g, "_").trim()
-    file.mv(path.join(process.cwd(), 'src', 'uploads', 'images', fileName))
+    file.mv(path.join(process.cwd(), 'src', 'uploads', 'imgs', fileName))
     let newUser = addUser(req.body, fileName)
     if (newUser) {
         res.cookie('token', jwt.sign(newUser.user_id, SECRET_KEY))
